@@ -1,0 +1,34 @@
+title: Eve Realm CLI
+description: Thin client binary for Eve Realm. Runs on the user machine without plugins. Provides authentication (login/logout), workspace connection, and remote editing commands.
+language: Go
+created: "2026-06-18"
+author: beduardo
+activeChange: CR-001
+autoCommit: true
+llmSummary: true
+scan:
+    includePaths:
+        - .
+    excludePaths:
+        - vendor/
+        - node_modules/
+        - .git/
+    heuristics:
+        detectTests: true
+        detectTodos: true
+        detectInterfaces: true
+        detectErrorPatterns: true
+vectorDB:
+    path: .software/vectors.db
+    chunkSize: 500
+    chunkOverlap: 50
+    embeddingModel: text-embedding-3-small
+    synthesisModel: gpt-5-mini
+counters:
+    ADR: 0
+    BF: 0
+    CR: 1
+    REQ: 0
+    SC: 0
+    TC: 0
+    US: 0
