@@ -1,0 +1,13 @@
+title: Eve Realm CLI
+type: technical
+objective: Technical developer documentation for the thin client binary. Covers authentication commands (login/logout/status), workspace connection, remote editing, and host binary distribution.
+author: beduardo
+status: drafting
+language: en
+created: "2026-06-18"
+vectorDB:
+    path: .docproject/vectors.db
+    chunkSize: 500
+    chunkOverlap: 50
+    embeddingModel: text-embedding-3-small
+    synthesisModel: gpt-5.4-mini
