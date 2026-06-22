@@ -116,10 +116,12 @@ The submodule is read-only — changes to the SDK happen exclusively in its own 
 
 | Command | Purpose |
 |---------|---------|
-| `make build` | Build host binary with ldflags |
+| `make build` | Build host binary with ldflags to `dist/` |
 | `make test` | Run Go tests |
-| `make install` | Copy binary to `~/.eve-realm/` |
-| `make release-patch` | Test → bump VERSION → build → verify |
+| `make install` | Build and copy binary to `/usr/local/bin/` |
+| `make clean` | Remove `dist/` |
+| `make version` | Show current version |
+| `make release-patch` | Test → bump VERSION → build → install → verify |
 | `make release-minor` | Same with minor bump |
 | `make release-major` | Same with major bump |
 
@@ -130,6 +132,8 @@ The submodule is read-only — changes to the SDK happen exclusively in its own 
 
 ### Key paths
 
+- **Production binary**: `/usr/local/bin/eve-realm`
+- **Development binary**: `dist/eve-realm`
 - **Config directory**: `~/.eve-realm/`
 - **Config file**: `~/.eve-realm/eve-realm.yaml`
 - **Binary name**: `eve-realm`

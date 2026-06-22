@@ -5,18 +5,20 @@ id: REQ-002
 priority: high
 related_adrs: []
 related_changes: []
-related_scenarios: []
+related_scenarios:
+    - SC-001
+    - SC-002
 related_testcases: []
 related_userstories: []
 source: manual
-status: draft
+status: blocked
 tags:
     - process
     - release
     - quality
     - cross-cutting
 title: Sprint completion and release process
-updated: "2026-06-20"
+updated: "2026-06-22"
 ---
 
 # REQ-002: Sprint completion and release process
@@ -56,7 +58,7 @@ Run the appropriate make target based on the version increment decided in Phase 
 make release-patch   # or release-minor / release-major
 ```
 
-This pipeline executes: `test → bump VERSION → build → version verify`. Binaries are written to `~/.eve-realm/` (production). Development builds use `dist/`. **No binaries should ever be left in the project root.**
+This pipeline executes: `test → bump VERSION → build → install → version verify`. Production binaries are installed to `/usr/local/bin/` (standard macOS CLI location). Development builds use `dist/`. **No binaries should ever be left in the project root.**
 
 If tests fail, the pipeline stops — no bump or build happens. Fix the issue and retry from Step 1.
 
@@ -121,15 +123,15 @@ eve-realm marketplace register
 
 ### Build artifact rules
 
-- **Production binaries** (`~/.eve-realm/`): written by `make build` and `make release-*`
-- **Development binaries** (`dist/`): written by development build targets
+- **Production binaries** (`/usr/local/bin/`): installed by `make install` and `make release-*`
+- **Development binaries** (`dist/`): written by `make build`
 - **Project root**: must never contain generated binaries. If a `go build` command is run during verification, use `-o /tmp/` or `-o dist/` as the output path
 
 ## Acceptance Criteria
 
 - Given a sprint spec is being generated, when the agent starts, then it asks the user for version increment (major/minor/patch) and whether README.md needs updating
 - Given all tests pass after implementation, when the release sequence runs, then it follows Steps 1–7 in the exact order defined above
-- Given the release pipeline runs, when binaries are built, then they are placed in `~/.eve-realm/` (production) or `dist/` (development), never in the project root
+- Given the release pipeline runs, when binaries are built, then they are placed in `/usr/local/bin/` (production via `make install`) or `dist/` (development via `make build`), never in the project root
 - Given the release completes, when RELEASE.md is updated, then the new entry is appended at the end without reading or modifying existing content
 - Given README.md was flagged for update at spec time, when Step 5 runs, then only the relevant sections are modified with the user-provided text
 - Given all release artifacts are committed, when `eve-realm marketplace register` runs, then the updated skills are available in the next Claude Code session
