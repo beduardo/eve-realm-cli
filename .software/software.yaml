@@ -6,6 +6,8 @@ author: beduardo
 activeChange: CR-001
 autoCommit: true
 llmSummary: true
+sprints:
+    counter: 3
 scan:
     includePaths:
         - .
@@ -30,6 +32,7 @@ counters:
     CR: 1
     REQ: 7
     SC: 23
+    SP: 0
     TC: 0
     US: 0
 pinned:

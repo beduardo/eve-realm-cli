@@ -30,27 +30,67 @@ make proto
 
 Requires `protoc`, `protoc-gen-go`, and `protoc-gen-go-grpc` installed in `$(go env GOPATH)/bin`.
 
+## Tools Commands
+
+The `tools` command group connects to the MCP Server and exposes two subcommands:
+`list` (discover available tools) and `invoke` (call a tool by name).
+
+### `eve-realm tools list`
+
+Lists every tool registered on the MCP Server. For each tool the output shows its
+name, description, and input schema.
+
+```bash
+eve-realm tools list
+```
+
+Example output:
+
+```
+Name:         ping
+Description:  Check whether the MCP Server is reachable
+Input Schema: {}
+
+Name:         summarise
+Description:  Summarise a block of text
+Input Schema: {"type":"object","properties":{"text":{"type":"string"}},"required":["text"]}
+```
+
+Use this command to discover what tools the connected MCP Server exposes before
+invoking one.
+
+### `eve-realm tools invoke`
+
+Invokes a named tool on the MCP Server and prints the JSON response to stdout.
+
+```bash
+eve-realm tools invoke <tool-name> [--input <json>]
+```
+
+| Argument / Flag | Description | Default |
+|-----------------|-------------|---------|
+| `<tool-name>` | Name of the tool to invoke (required positional argument) | — |
+| `--input <json>` | JSON object passed verbatim as the tool input | `{}` |
+
+Examples:
+
+```bash
+# Invoke without input (uses the default empty object)
+eve-realm tools invoke ping
+
+# Invoke with a JSON input object
+eve-realm tools invoke summarise --input '{"text":"Hello world"}'
+```
+
+The raw JSON response from the tool is written to stdout. On error, a descriptive
+message is written to stderr and the process exits non-zero. If the tool name is not
+found, the error message includes the list of available tools.
+
 ## Master Skill
 
 The `skills/master/` directory contains the master skill, published as a single
 marketplace entry named `eve-realm`. It dynamically surfaces all tools available on
 the MCP Server at runtime.
-
-**Discovery mode** (no arguments):
-
-```
-/eve-realm
-```
-
-Lists all registered tools with their names, descriptions, and input schemas.
-
-**Invocation mode** (tool name + optional JSON input):
-
-```
-/eve-realm ping {}
-```
-
-Invokes the named tool and returns the raw JSON response.
 
 ### Registering the skill in Claude Code
 
@@ -72,7 +112,8 @@ Claude Code to pick up the new marketplace entry.
 
 ## MCP Server Configuration
 
-The MCP Server address is resolved in the following order (first non-empty value wins):
+The MCP Server address used by `eve-realm tools` is resolved in the following order
+(first non-empty value wins):
 
 1. **Environment variable** `EVE_REALM_MCP_ADDR`:
 

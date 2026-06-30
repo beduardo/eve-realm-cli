@@ -1,0 +1,59 @@
+{
+  "id": "SP-003",
+  "title": "Cobra command for MCP tool listing and invocation",
+  "status": "completed",
+  "created": "2026-06-30T06:41:22Z",
+  "updated": "2026-06-30T15:05:15Z",
+  "entities": [
+    {
+      "id": "REQ-006",
+      "title": "Cobra command for MCP tool listing and invocation",
+      "type": "requirement",
+      "status_at_entry": "active",
+      "partial": false
+    },
+    {
+      "id": "SC-012",
+      "title": "Tools list outputs tool descriptors to stdout",
+      "type": "scenario",
+      "status_at_entry": "validated",
+      "partial": false
+    },
+    {
+      "id": "SC-013",
+      "title": "Tools invoke sends default empty input and returns JSON to stdout",
+      "type": "scenario",
+      "status_at_entry": "validated",
+      "partial": false
+    },
+    {
+      "id": "SC-014",
+      "title": "Tools invoke passes --input flag value to the tool",
+      "type": "scenario",
+      "status_at_entry": "validated",
+      "partial": false
+    },
+    {
+      "id": "SC-015",
+      "title": "Tools commands exit non-zero with error when server unreachable",
+      "type": "scenario",
+      "status_at_entry": "validated",
+      "partial": false
+    },
+    {
+      "id": "SC-016",
+      "title": "Tools invoke exits non-zero and lists alternatives when tool not found",
+      "type": "scenario",
+      "status_at_entry": "validated",
+      "partial": false
+    },
+    {
+      "id": "SC-017",
+      "title": "MCP Server address resolved from env var, config file, or default",
+      "type": "scenario",
+      "status_at_entry": "validated",
+      "partial": false
+    }
+  ],
+  "readme_update_needed": false
+}

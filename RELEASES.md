@@ -18,3 +18,20 @@
 **Entities affected**: REQ-004, REQ-005, SC-003, SC-004, SC-005, SC-006, SC-007, SC-008, SC-009, SC-00A, SC-00B
 
 ---
+
+## <version> — 2026-06-30 (git: <hash>)
+
+### Sprint: SP-003 — Cobra command for MCP tool listing and invocation
+
+**Version increment**: TBD
+
+**Changes**:
+- Adopted Cobra as root command framework, replacing the bare argument parser in `cmd/main.go`
+- New `eve-realm tools list` command for discovering MCP Server tools with human-readable output (name, description, input schema)
+- New `eve-realm tools invoke <name> [--input <json>]` command for calling MCP Server tools with verbatim JSON pass-through and not-found alternative listing
+- Added `github.com/spf13/cobra` dependency to `go.mod`
+- MCP Server address resolution via three-tier precedence (env var → YAML config → default)
+
+**Entities affected**: REQ-006, SC-012, SC-013, SC-014, SC-015, SC-016, SC-017
+
+---
