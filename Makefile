@@ -9,7 +9,7 @@ INSTALL_DIR := /usr/local/bin
 
 LDFLAGS := -X main.Version=$(VERSION) -X main.GitHash=$(GIT_HASH) -X main.BuildDate=$(BUILD_DATE)
 
-.PHONY: build test install clean version \
+.PHONY: build test install clean version proto \
         bump-patch bump-minor bump-major \
         release-patch release-minor release-major
 
@@ -32,6 +32,19 @@ clean:
 
 version:
 	@echo $(VERSION)
+
+# ─── Proto ──────────────────────────────────────────────────────────────────
+
+GOPATH_BIN := $(shell go env GOPATH)/bin
+PROTO_SRC  := proto/mcp/v1/mcp.proto
+
+proto:
+	protoc --proto_path=proto \
+		--plugin=protoc-gen-go=$(GOPATH_BIN)/protoc-gen-go \
+		--plugin=protoc-gen-go-grpc=$(GOPATH_BIN)/protoc-gen-go-grpc \
+		--go_out=. --go_opt=module=github.com/beduardo/eve-realm-cli \
+		--go-grpc_out=. --go-grpc_opt=module=github.com/beduardo/eve-realm-cli \
+		$(PROTO_SRC)
 
 # ─── Version Bumping ─────────────────────────────────────────────────────────
 

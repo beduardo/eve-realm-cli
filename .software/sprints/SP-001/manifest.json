@@ -1,0 +1,87 @@
+{
+  "id": "SP-001",
+  "title": "MCP gRPC Connection Client",
+  "status": "completed",
+  "created": "2026-06-28T10:13:55Z",
+  "updated": "2026-06-28T18:31:43Z",
+  "entities": [
+    {
+      "id": "REQ-004",
+      "title": "gRPC tool client for MCP Server",
+      "type": "requirement",
+      "status_at_entry": "active",
+      "partial": false
+    },
+    {
+      "id": "REQ-005",
+      "title": "Master skill for MCP tool discovery and invocation",
+      "type": "requirement",
+      "status_at_entry": "active",
+      "partial": false
+    },
+    {
+      "id": "SC-003",
+      "title": "Client lists tools from MCP Server",
+      "type": "scenario",
+      "status_at_entry": "validated",
+      "partial": false
+    },
+    {
+      "id": "SC-004",
+      "title": "Client invokes tool and returns response",
+      "type": "scenario",
+      "status_at_entry": "validated",
+      "partial": false
+    },
+    {
+      "id": "SC-005",
+      "title": "Client returns connection error when server unreachable",
+      "type": "scenario",
+      "status_at_entry": "validated",
+      "partial": false
+    },
+    {
+      "id": "SC-006",
+      "title": "Client returns typed error for unknown tool",
+      "type": "scenario",
+      "status_at_entry": "validated",
+      "partial": false
+    },
+    {
+      "id": "SC-007",
+      "title": "Discovery mode lists all available tools",
+      "type": "scenario",
+      "status_at_entry": "validated",
+      "partial": false
+    },
+    {
+      "id": "SC-008",
+      "title": "Invocation mode returns tool response",
+      "type": "scenario",
+      "status_at_entry": "validated",
+      "partial": false
+    },
+    {
+      "id": "SC-009",
+      "title": "Skill handles unreachable MCP Server gracefully",
+      "type": "scenario",
+      "status_at_entry": "validated",
+      "partial": false
+    },
+    {
+      "id": "SC-00A",
+      "title": "Skill suggests alternatives when tool not found",
+      "type": "scenario",
+      "status_at_entry": "validated",
+      "partial": false
+    },
+    {
+      "id": "SC-00B",
+      "title": "End-to-end ping invocation via master skill",
+      "type": "scenario",
+      "status_at_entry": "validated",
+      "partial": false
+    }
+  ],
+  "readme_update_needed": false
+}

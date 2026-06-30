@@ -25,11 +25,11 @@ vectorDB:
     embeddingModel: text-embedding-3-small
     synthesisModel: gpt-5-mini
 counters:
-    ADR: 0
+    ADR: 1
     BF: 0
     CR: 1
-    REQ: 3
-    SC: 2
+    REQ: 7
+    SC: 23
     TC: 0
     US: 0
 pinned:

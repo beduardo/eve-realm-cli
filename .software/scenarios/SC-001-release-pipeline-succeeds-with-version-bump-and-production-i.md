@@ -7,14 +7,14 @@ related_reqs:
     - REQ-002
 related_testcases: []
 source: manual
-status: validated
+status: automated
 tags:
     - release
     - build
     - makefile
 title: Release pipeline succeeds with version bump and production install
 type: happy-path
-updated: "2026-06-22"
+updated: "2026-06-29"
 ---
 
 # SC-001: Release pipeline succeeds with version bump and production install

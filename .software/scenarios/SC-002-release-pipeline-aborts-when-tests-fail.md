@@ -7,14 +7,14 @@ related_reqs:
     - REQ-002
 related_testcases: []
 source: manual
-status: validated
+status: automated
 tags:
     - release
     - build
     - makefile
 title: Release pipeline aborts when tests fail
 type: error-path
-updated: "2026-06-22"
+updated: "2026-06-29"
 ---
 
 # SC-002: Release pipeline aborts when tests fail
