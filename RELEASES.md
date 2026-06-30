@@ -19,11 +19,11 @@
 
 ---
 
-## <version> — 2026-06-30 (git: <hash>)
+## 0.3.0 — 2026-06-30 (git: 52ed513)
 
 ### Sprint: SP-003 — Cobra command for MCP tool listing and invocation
 
-**Version increment**: TBD
+**Version increment**: minor
 
 **Changes**:
 - Adopted Cobra as root command framework, replacing the bare argument parser in `cmd/main.go`
